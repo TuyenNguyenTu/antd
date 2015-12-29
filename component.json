@@ -43,5 +43,5 @@
         "velocity-animate": "~1.2.2",
         "warning": "~2.1.0"
     },
-    "version": "0.10.4"
+    "version": "0.11.0-beta6"
 }
