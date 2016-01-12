@@ -45,7 +45,6 @@
       height: 12px;
       margin-top: -6px;
       line-height: 12px;
-      color: #999;
       .iconfont-size-under-12px(8px);
       &:before {
         transition: transform 0.2s ease;
@@ -89,20 +88,21 @@
   }
   &-menu {
     float: left;
-    min-width: 111px;
+    width: 111px;
     height: 180px;
     list-style: none;
     margin: 0;
     padding: 0;
     border-right: 1px solid @border-color-split;
-    overflow: auto;
     &:last-child {
       border-right-color: transparent;
       margin-right: -1px;
     }
   }
   &-menu-item {
-    padding: 7px 16px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 16px;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;

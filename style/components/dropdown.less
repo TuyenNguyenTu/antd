@@ -30,8 +30,7 @@
     }
   }
 
-  &-hidden,
-  &-menu-hidden {
+  &-hidden {
     display: none;
   }
 
@@ -47,11 +46,15 @@
     box-shadow: @box-shadow-base;
     background-clip: padding-box;
     border: 1px solid @border-color-base;
+    overflow: hidden;
 
-    &-item,
-    &-submenu-title {
-      padding: 7px 15px;
+    > li {
       margin: 0;
+      padding: 0;
+    }
+
+    & > &-item {
+      padding: 7px 15px;
       clear: both;
       font-size: 12px;
       font-weight: normal;
@@ -83,12 +86,14 @@
         }
       }
 
-      &:first-child {
-        border-radius: @border-radius-base @border-radius-base 0 0;
+      &:last-child {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
       }
 
-      &:last-child {
-        border-radius: 0 0 @border-radius-base @border-radius-base;
+      &:first-child {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
       }
 
       &-divider {
@@ -97,36 +102,6 @@
         background-color: @border-color-split;
         line-height: 0;
       }
-    }
-
-    &-submenu-title:after {
-      font-family: "anticon" !important;
-      position: absolute;
-      content: "\e600";
-      right: 15px;
-      color: #999;
-      .iconfont-size-under-12px(8px);
-    }
-
-    &-submenu-vertical {
-      position: relative;
-    }
-
-    &-submenu-vertical > & {
-      top: 0;
-      left: 100%;
-      position: absolute;
-      min-width: 100%;
-      margin-left: 4px;
-      transform-origin: 0 0;
-    }
-
-    &-submenu:first-child &-submenu-title {
-      border-radius: @border-radius-base @border-radius-base 0 0;
-    }
-
-    &-submenu:last-child &-submenu-title {
-      border-radius: 0 0 @border-radius-base @border-radius-base;
     }
   }
 
