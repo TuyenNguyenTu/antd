@@ -34,10 +34,6 @@
     .btn-ghost;
   }
 
-  &-dashed {
-    .btn-dashed;
-  }
-
   &-circle,
   &-circle-outline {
     .btn-circle(@btn-prefix-cls);
@@ -56,32 +52,26 @@
     transition: opacity 0.5s ease;
   }
 
-  &&-loading {
-    padding-left: 29px;
+  &-loading {
+    padding-right: 31px;
     pointer-events: none;
     opacity: 0.75;
     &:after {
       .animation(loadingCircle 1s infinite linear);
       height: 12px;
       line-height: 12px;
-      left: 10px;
+      right: 12px;
       top: 50%;
       margin-top: -6px;
       opacity: 1;
       visibility: visible;
     }
-    > .anticon {
-      display: none;
-      & + span {
-        margin-left: 0;
-      }
-    }
   }
 
   &-sm&-loading {
-    padding-left: 24px;
+    padding-right: 24px;
     &:after {
-      left: 7px;
+      right: 8px;
     }
   }
 

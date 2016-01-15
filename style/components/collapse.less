@@ -10,10 +10,10 @@
 .@{collapse-prefix-cls} {
   background-color: #f4f4f4;
   border-radius: 3px;
-  border: 1px solid @border-color-base;
+  border: 1px solid #d9d9d9;
 
   & > &-item {
-    border-top: 1px solid @border-color-base;
+    border-top: 1px solid #d9d9d9;
     &:first-child {
       border-top: 0;
     }
@@ -63,6 +63,11 @@
     &-active {
       display: block;
     }
+  }
+
+  &-collapsing {
+    transition-duration: .24s;
+    transition-timing-function: @ease-out-circ;
   }
 
   &-item:last-child {
