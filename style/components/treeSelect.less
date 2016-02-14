@@ -1,4 +1,116 @@
-@select-prefix-cls: ant-select;
+@tree-select-tree-prefix-cls: ant-tree-select-tree;
+.antCheckboxFn(@checkbox-prefix-cls: ant-tree-select-tree-checkbox);
+@import "../mixins/iconfont";
+
+.@{tree-select-tree-prefix-cls} {
+  margin: 0;
+  padding: 8px;
+  font-size: 12px;
+  li {
+    padding: 0;
+    margin: 8px 0;
+    list-style: none;
+    white-space: nowrap;
+    outline: 0;
+    &.filter-node {
+      > a {
+        color: @error-color!important;
+        font-weight: bold!important;
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0 0 0 18px;
+    }
+    a {
+      display: inline-block;
+      padding: 1px 5px;
+      border-radius: 2px;
+      margin: 0;
+      cursor: pointer;
+      text-decoration: none;
+      vertical-align: top;
+      color: #666;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: tint(@primary-color, 90%);
+      }
+      &.@{tree-select-tree-prefix-cls}-node-selected {
+        background-color: tint(@primary-color, 80%);
+      }
+    }
+    span {
+      &.@{tree-select-tree-prefix-cls}-checkbox {
+        margin: 2px 4px 0 0;
+      }
+      &.@{tree-select-tree-prefix-cls}-switcher,
+      &.@{tree-select-tree-prefix-cls}-iconEle {
+        margin: 0;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+        border: 0 none;
+        cursor: pointer;
+        outline: none;
+      }
+      &.@{tree-select-tree-prefix-cls}-icon_loading {
+        &:after {
+          content: '\e6a1';
+          display: inline-block;
+          font-family: 'anticon';
+          font-weight: bold;
+          .animation(loadingCircle 1s infinite linear);
+          margin-top: 8px;
+        }
+      }
+      &.@{tree-select-tree-prefix-cls}-switcher {
+        &.@{tree-select-tree-prefix-cls}-roots_open,
+        &.@{tree-select-tree-prefix-cls}-center_open,
+        &.@{tree-select-tree-prefix-cls}-bottom_open,
+        &.@{tree-select-tree-prefix-cls}-noline_open {
+          .antTreeSwitcherIcon();
+        }
+        &.@{tree-select-tree-prefix-cls}-roots_close,
+        &.@{tree-select-tree-prefix-cls}-center_close,
+        &.@{tree-select-tree-prefix-cls}-bottom_close,
+        &.@{tree-select-tree-prefix-cls}-noline_close {
+          .antTreeSwitcherIcon();
+          .ie-rotate(3);
+          &:after {
+            transform: rotate(270deg) scale(0.5);
+          }
+        }
+      }
+    }
+  }
+  &-child-tree {
+    display: none;
+    &-open {
+      display: block;
+    }
+  }
+  &-treenode-disabled {
+    >span,
+    >a,
+    >a span {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+  &-icon__open {
+    margin-right: 2px;
+    vertical-align: top;
+  }
+  &-icon__close {
+    margin-right: 2px;
+    vertical-align: top;
+  }
+}
+
+
+@tree-select-prefix-cls: ant-tree-select;
 
 @duration: .3s;
 
@@ -10,7 +122,7 @@
   font-weight: bold;
 }
 
-.@{select-prefix-cls} {
+.@{tree-select-prefix-cls} {
   box-sizing: border-box;
   display: inline-block;
   margin: 0;
@@ -80,15 +192,11 @@
     cursor: not-allowed;
   }
 
-  &-disabled &-selection--multiple &-selection__choice__remove {
-    display: none;
-  }
-
   &-selection--single {
     height: 28px;
     cursor: pointer;
 
-    .@{select-prefix-cls}-selection__rendered {
+    .@{tree-select-prefix-cls}-selection__rendered {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -98,29 +206,29 @@
       line-height: 26px;
     }
 
-    .@{select-prefix-cls}-selection__clear {
+    .@{tree-select-prefix-cls}-selection__clear {
       .selection__clear();
     }
 
-    .@{select-prefix-cls}-selection__placeholder {
+    .@{tree-select-prefix-cls}-selection__placeholder {
       color: #ccc;
     }
   }
 
   &-lg {
-    .ant-select-selection--single {
+    .@{tree-select-prefix-cls}-selection--single {
       height: 32px;
-      .ant-select-selection__rendered {
+      .@{tree-select-prefix-cls}-selection__rendered {
         line-height: 30px;
       }
     }
 
-    .ant-select-selection--multiple {
+    .@{tree-select-prefix-cls}-selection--multiple {
       min-height: 32px;
-      .ant-select-selection__rendered {
+      .@{tree-select-prefix-cls}-selection__rendered {
         li {
           height: 24px;
-          .ant-select-selection__choice__content {
+          .@{tree-select-prefix-cls}-selection__choice__content {
             font-size: 14px;
             line-height: 24px;
           }
@@ -130,26 +238,26 @@
   }
 
   &-sm {
-    .ant-select-selection {
+    .@{tree-select-prefix-cls}-selection {
       border-radius: @border-radius-sm;
     }
-    .ant-select-selection--single {
+    .@{tree-select-prefix-cls}-selection--single {
       height: 22px;
-      .ant-select-selection__rendered {
+      .@{tree-select-prefix-cls}-selection__rendered {
         line-height: 20px;
       }
     }
-    .ant-select-selection--multiple {
+    .@{tree-select-prefix-cls}-selection--multiple {
       min-height: 22px;
-      .ant-select-selection__rendered {
+      .@{tree-select-prefix-cls}-selection__rendered {
         li {
           height: 14px;
-          .ant-select-selection__choice__content {
+          .@{tree-select-prefix-cls}-selection__choice__content {
             line-height: 14px;
             position: relative;
             top: -3px;
           }
-          .ant-select-selection__choice__remove {
+          .@{tree-select-prefix-cls}-selection__choice__remove {
             position: relative;
             top: -4px;
           }
@@ -181,16 +289,15 @@
   &-search--inline {
     float: left;
 
-    .@{select-prefix-cls}-search__field__wrap {
+    .@{tree-select-prefix-cls}-search__field__wrap {
       width: 100%;
     }
 
-    .@{select-prefix-cls}-search__field {
+    .@{tree-select-prefix-cls}-search__field {
       border: 0;
       font-size: 100%;
       background: transparent;
       outline: 0;
-      border-radius: @border-radius-base;
     }
     > i {
       float: right;
@@ -201,26 +308,26 @@
     min-height: 28px;
     cursor: text;
 
-    .@{select-prefix-cls}-search__field__placeholder {
+    .@{tree-select-prefix-cls}-search__field__placeholder {
       top: 6px;
       left: 10px;
     }
 
-    .@{select-prefix-cls}-search--inline {
+    .@{tree-select-prefix-cls}-search--inline {
       width: auto;
-      .@{select-prefix-cls}-search__field {
+      .@{tree-select-prefix-cls}-search__field {
         width: 0.75em;
       }
     }
 
-    .@{select-prefix-cls}-selection__rendered {
+    .@{tree-select-prefix-cls}-selection__rendered {
       overflow: hidden;
       text-overflow: ellipsis;
       padding-left: 6px;
       padding-bottom: 4px;
     }
 
-    .@{select-prefix-cls}-selection__clear {
+    .@{tree-select-prefix-cls}-selection__clear {
       .selection__clear();
       margin-top: 5px;
       margin-right: 10px;
@@ -232,7 +339,7 @@
       line-height: 20px;
     }
 
-    .@{select-prefix-cls}-selection__choice {
+    .@{tree-select-prefix-cls}-selection__choice {
       background-color: #f3f3f3;
       border-radius: 4px;
       cursor: default;
@@ -246,7 +353,7 @@
       padding: 0 20px 0 10px;
     }
 
-    .@{select-prefix-cls}-selection__choice__content {
+    .@{tree-select-prefix-cls}-selection__choice__content {
       display: inline-block;
       white-space: nowrap;
       overflow: hidden;
@@ -255,7 +362,7 @@
       transition: margin @duration @ease-in-out;
     }
 
-    .@{select-prefix-cls}-selection__choice__remove {
+    .@{tree-select-prefix-cls}-selection__choice__remove {
       .iconfont-mixin();
       color: #999;
       line-height: 20px;
@@ -277,55 +384,49 @@
   }
 
   &-open {
-    .@{select-prefix-cls}-arrow {
+    .@{tree-select-prefix-cls}-arrow {
       .ie-rotate(2);
       -ms-transform: rotate(180deg);
       &:before {
         .rotate(180deg);
       }
     }
-    .@{select-prefix-cls}-selection {
+    .@{tree-select-prefix-cls}-selection {
       .active();
     }
   }
 
   &-combobox {
-    .@{select-prefix-cls}-arrow {
+    .@{tree-select-prefix-cls}-arrow {
       display: none;
     }
-    .@{select-prefix-cls}-search--inline {
+    .@{tree-select-prefix-cls}-search--inline {
       height: 100%;
       float: none;
     }
-    .@{select-prefix-cls}-search__field__placeholder {
+    .@{tree-select-prefix-cls}-search__field__placeholder {
       left: 10px;
       cursor: text;
     }
-    .@{select-prefix-cls}-search__field__wrap {
+    .@{tree-select-prefix-cls}-search__field__wrap {
       width: 100%;
       height: 100%;
     }
-    .@{select-prefix-cls}-search__field {
+    .@{tree-select-prefix-cls}-search__field {
       padding: 0 10px;
       width: 100%;
       height: 100%;
       position: relative;
       z-index: 1;
-      transition: all .3s @ease-in-out;
-
-      &:focus {
-        box-shadow: 0 0 0 1px tint(@primary-color, 20%), 0 0 0 3px tint(@primary-color, 80%);
-      }
     }
-    .@{select-prefix-cls}-selection__rendered {
+    .@{tree-select-prefix-cls}-selection__rendered {
       padding: 0;
       height: 100%;
-      overflow: visible;
     }
   }
 }
 
-.@{select-prefix-cls}-dropdown {
+.@{tree-select-prefix-cls}-dropdown {
   &.slide-up-enter.slide-up-enter-active&-placement-bottomLeft,
   &.slide-up-appear.slide-up-appear-active&-placement-bottomLeft {
     animation-name: antSlideUpIn;
@@ -373,7 +474,7 @@
       margin: 0;
       padding: 0;
 
-      > .@{select-prefix-cls}-dropdown-menu-item {
+      > .@{tree-select-prefix-cls}-dropdown-menu-item {
         padding-left: 24px;
       }
     }
@@ -392,8 +493,6 @@
       color: #666;
       white-space: nowrap;
       cursor: pointer;
-      white-space: nowrap;
-      text-overflow: ellipsis;
       overflow: hidden;
       transition: background 0.3s ease;
 
@@ -440,22 +539,22 @@
 
   &-container-open,
   &-open {
-    .@{select-prefix-cls}-dropdown {
+    .@{tree-select-prefix-cls}-dropdown {
       display: block;
     }
   }
 
-  .@{select-prefix-cls}-dropdown-search {
+  .@{tree-select-prefix-cls}-dropdown-search {
     display: block;
     padding: 4px;
-    .@{select-prefix-cls}-search__field__placeholder {
+    .@{tree-select-prefix-cls}-search__field__placeholder {
       left: 7px;
       top: 5px;
     }
-    .@{select-prefix-cls}-search__field__wrap {
+    .@{tree-select-prefix-cls}-search__field__wrap {
       width: 100%;
     }
-    .@{select-prefix-cls}-search__field {
+    .@{tree-select-prefix-cls}-search__field {
       padding: 4px 7px;
       width: 100%;
       box-sizing: border-box;
@@ -463,7 +562,7 @@
       border-radius: 4px;
       outline: none;
     }
-    &.@{select-prefix-cls}-search--hide {
+    &.@{tree-select-prefix-cls}-search--hide {
       display: none;
     }
   }
